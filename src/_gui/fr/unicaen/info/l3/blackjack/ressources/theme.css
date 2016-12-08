@@ -1,0 +1,222 @@
+.background {
+    -fx-background-color: #d9d9d9;
+}
+
+.background-main-menu {
+    -fx-background-color: #654320;
+    -fx-background-image: url("images/blackjack_board_blur.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 1280 720;
+}
+
+.background-board {
+    -fx-background-color: #654320;
+    -fx-background-image: url("images/blackjack_board.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 1280 720;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #101010;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d, 20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d, 50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+/*
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button-main-menu {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 15pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .button:default:hover:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color, 30%);
+}
+
+/* Current player frame */
+.current-handplayer-frame {
+    -fx-effect: dropshadow(gaussian, #ffc842, 25, 0.5, 0, 0);
+}
+
+/* Score and bet */
+.text-info {
+    -fx-font-weight: bolder;
+    -fx-font: 18px "Ubuntu";
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-text-inner-color: -fx-stroke;
+    -fx-stroke-width: 1;
+    -fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);
+    -fx-stroke: white;
+    -fx-opacity: 1;
+}
+
+.text-status-init {
+    -fx-font-weight: bolder;
+    -fx-font: 32px "Ubuntu";
+    -fx-stroke-width: 1;
+}
+
+.text-status {
+    -fx-font-weight: bolder;
+    -fx-font: 32px "Ubuntu";
+    -fx-stroke-width: 1;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-text-inner-color: -fx-stroke;
+}
+
+.text-status-win {
+    -fx-effect: dropshadow(gaussian, #27ae60, 1, 1, 0, 0);
+    -fx-stroke: #2ecc71;
+}
+
+.text-status-tie {
+    -fx-effect: dropshadow(gaussian, #2AA7C0, 1, 1, 0, 0);
+    -fx-stroke: #2FB3CD;
+}
+
+.text-status-lose {
+    -fx-effect: dropshadow(gaussian, #c0392b, 1, 1, 0, 0);
+    -fx-stroke: #e74c3c;
+}
+
+.text-status-default {
+    -fx-effect: dropshadow(gaussian, #000000, 1, 1, 0, 0);
+    -fx-stroke: #000000;
+}
+

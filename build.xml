@@ -1,0 +1,138 @@
+<project name="blackjack" default="run" basedir="">
+    <!--
+     ==================== Jar options ===========================
+    -->
+    <property name="app.name" value="blackjack"/>
+    <property name="app.version" value="1.2.5"/>
+    <property name="app.fullname" value="${app.name}-${app.version}"/>
+    <!--
+     ==================== Home options ===========================
+    -->
+    <property name="build.home" value="${basedir}/build"/>
+    <property name="dist.home" value="${basedir}/dist"/>
+    <property name="docs.home" value="${basedir}/docs"/>
+    <property name="src.home" value="${basedir}/src"/>
+    <property name="src-core.home" value="${src.home}/_coreAutomate"/>
+    <property name="src-gui.home" value="${src.home}/_gui"/>
+    <property name="src-lib.home" value="../library/dist/"/>
+    <property name="lib.home" value="${basedir}/lib"/>
+    <!--
+     ==================== Other options ===========================
+    -->
+    <property name="main-class"  value="fr.unicaen.info.l3.blackjack.controller.Main"/>
+    <property name="javac.version" value="1.8"/>
+    <property name="javac.encoding" value="UTF-8"/>
+    <!--
+     ==================== Compile options ===========================
+    -->
+    <property name="compile.debug" value="true"/>
+    <property name="compile.deprecation" value="false"/>
+    <property name="compile.optimize" value="true"/>
+    <!--
+     ==================== Compilation Classpath ===========================
+    -->
+    <path id="compile.classpath">
+        <fileset dir="${src-lib.home}">
+            <include name="**/*.jar"/>
+            <exclude name="docs/" />
+        </fileset>
+    </path>
+    <!--
+     ==================== All Target ======================================
+    -->
+    <target name="all" depends="clean,compile" description="Clean build and dist directories, then compile"/>
+    <!--
+     ==================== Clean Target ====================================
+    -->
+    <target name="clean" description="Delete old build and dist directories">
+        <delete dir="${build.home}"/>
+        <delete dir="${dist.home}"/>
+        <delete dir="${lib.home}"/>
+    </target>
+    <!--
+     ==================== Clean Target After Build ====================================
+    -->
+    <target name="clean-after-build" description="Delete all build files">
+        <delete dir="${build.home}"/>
+    </target>
+    <!--
+     ==================== Compile Target ==================================
+    -->
+    <target name="compile" depends="prepare" description="Compile Java sources">
+        <javac srcdir="${src-core.home}" destdir="${build.home}" debug="${compile.debug}"
+               deprecation="${compile.deprecation}" optimize="${compile.optimize}"
+               source="${javac.version}" encoding="${javac.encoding}" includeantruntime="false">
+            <classpath refid="compile.classpath"/>
+            <compilerarg value="-Xlint"/>
+        </javac>
+        <javac srcdir="${src-gui.home}" destdir="${build.home}" debug="${compile.debug}"
+               deprecation="${compile.deprecation}" optimize="${compile.optimize}" source="${javac.version}"
+               encoding="${javac.encoding}" includeantruntime="false">
+            <classpath refid="compile.classpath"/>
+            <compilerarg value="-Xlint"/>
+        </javac>
+        <!--  Copy application resources  -->
+        <copy todir="${build.home}">
+            <fileset dir="${src-core.home}" excludes="**/*.java"/>
+            <fileset dir="${src-gui.home}" excludes="**/*.java"/>
+        </copy>
+    </target>
+    <!--
+     ==================== Prepare Target ==================================
+    -->
+    <target name="prepare">
+        <mkdir dir="${build.home}"/>
+        <mkdir dir="${dist.home}"/>
+        <mkdir dir="${lib.home}"/>
+    </target>
+    <!--
+     ==================== Dist Target =====================================
+    -->
+    <target name="dist" depends="clean,compile,javadoc" description="Create binary distribution">
+        <copy todir="${lib.home}">
+            <fileset dir="${src-lib.home}"/>
+        </copy>
+        <!--  Create application JAR file  -->
+        <jar jarfile="${dist.home}/${app.fullname}.jar" basedir="${build.home}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Specification-Version" value="${app.version}" />
+            </manifest>
+            <zipgroupfileset dir="${lib.home}" includes="**/*.jar"/>
+        </jar>
+    </target>
+    <!--
+     ==================== Javadoc Target ==================================
+    -->
+    <target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+        <mkdir dir="${dist.home}/docs/api"/>
+        <javadoc destdir="${dist.home}/docs/api" packagenames="*">
+            <fileset dir="${src-gui.home}">
+                <include name="**/*.java"/>
+                <exclude name="${src-gui.home}/fr/unicaen/info/l3/blackjack/ressources/language/*.java" />
+            </fileset>
+            <fileset dir="${src-core.home}">
+                <include name="**/*.java"/>
+            </fileset>
+            <classpath>
+                <fileset dir="${src-lib.home}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javadoc>
+    </target>
+    <!--
+     ==================== Run Target ==================================
+    -->
+    <target name="run" depends="dist,clean-after-build">
+        <java jar="${dist.home}/${app.fullname}.jar" fork="true"/>
+    </target>
+    <!--
+     ==================== Run English ==================================
+    -->
+    <target name="run-english" depends="dist,clean-after-build">
+        <java jar="${dist.home}/${app.fullname}.jar" fork="true">
+            <jvmarg value="-Duser.language=en"/>
+        </java>
+    </target>
+</project>

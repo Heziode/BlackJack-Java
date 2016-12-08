@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<!--
+  ~ (The MIT License)
+  ~
+  ~ Copyright (c) 2016 - Dauprat Quentin, Duval Florian, Girault Jeoffrey & Michel Fabien
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="149.0" prefWidth="600.0" styleClass="background"
+            stylesheets="@../ressources/theme.css" xmlns="http://javafx.com/javafx/8.0.76-ea"
+            fx:controller="fr.unicaen.info.l3.blackjack.view.NewGameDialogController">
+    <children>
+        <GridPane layoutX="24.0" layoutY="155.0" prefHeight="81.0" prefWidth="556.0"
+                  stylesheets="@../ressources/theme.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="20.0"
+                  AnchorPane.topAnchor="20.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="240.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="320.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label fx:id="numberOfPlayers_lbl" prefHeight="14.0" prefWidth="170.0"
+                       stylesheets="@../ressources/theme.css" text="Nombre de joueur :"/>
+                <Label fx:id="numberOfDecks_lbl" stylesheets="@../ressources/theme.css" text="Nombre de paquet :"
+                       GridPane.rowIndex="1"/>
+                <GridPane stylesheets="@../ressources/theme.css" GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="0">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="numberOfPlayersGroup"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" selected="true" stylesheets="@../ressources/theme.css"
+                                     text="1" toggleGroup="$numberOfPlayersGroup" GridPane.columnIndex="1"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="2"
+                                     toggleGroup="$numberOfPlayersGroup" GridPane.columnIndex="2"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="3"
+                                     toggleGroup="$numberOfPlayersGroup" GridPane.columnIndex="3"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="4"
+                                     toggleGroup="$numberOfPlayersGroup" GridPane.columnIndex="4"/>
+                    </children>
+                </GridPane>
+                <GridPane layoutX="290.0" layoutY="10.0" stylesheets="@../ressources/theme.css" GridPane.columnIndex="1"
+                          GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <RadioButton mnemonicParsing="false" selected="true" stylesheets="@../ressources/theme.css"
+                                     text="1">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="numberOfDecksGroup"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="2"
+                                     toggleGroup="$numberOfDecksGroup" GridPane.columnIndex="1"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="3"
+                                     toggleGroup="$numberOfDecksGroup" GridPane.columnIndex="2"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="4"
+                                     toggleGroup="$numberOfDecksGroup" GridPane.columnIndex="3"/>
+                        <RadioButton mnemonicParsing="false" stylesheets="@../ressources/theme.css" text="5"
+                                     toggleGroup="$numberOfDecksGroup" GridPane.columnIndex="4"/>
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+        <GridPane layoutX="150.0" layoutY="139.0" prefHeight="30.0" prefWidth="253.0" AnchorPane.bottomAnchor="10.0"
+                  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="play_btn" defaultButton="true" maxHeight="30.0" maxWidth="120.0" minHeight="30.0"
+                        minWidth="112.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0"
+                        prefWidth="112.0" stylesheets="@../ressources/theme.css" text="Jouer">
+                    <GridPane.margin>
+                        <Insets right="5.0"/>
+                    </GridPane.margin>
+                </Button>
+                <Button fx:id="cancle_btn" maxHeight="30.0" maxWidth="120.0" minHeight="30.0" minWidth="120.0"
+                        mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="120.0"
+                        stylesheets="@../ressources/theme.css" text="Annuler" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets left="5.0"/>
+                    </GridPane.margin>
+                </Button>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
