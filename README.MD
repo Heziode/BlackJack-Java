@@ -1,4 +1,4 @@
-# Projet Blackjack
+# Blackjack Java
 
 Ce programme est un jeu de blackjack développé dans le cadre d'un projet universitaire.
 
